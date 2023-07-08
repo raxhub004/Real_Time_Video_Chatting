@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Conference</title>
+    <link id="css" rel="stylesheet" href="styles.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+	<script src="https://kit.fontawesome.com/8e806f66e5.js" crossorigin="anonymous"></script>
+    <script>
+      const ROOM_ID = "<%= roomId %>";
+	  const USER_NAME = "<%= username %>";
+      const USER_ID = "<%= username %>";
+    </script>
+  </head>
+
+  <body style="font-family: verdana;">
+    <div class="main">
+      	<div class="main_left">
+			<div class="room_Id">
+				<b>Room ID </b>: <%= roomId %>
+			</div>
+	        <div class="main_videos">
+    	    	<div id="video-grid">
+	          	</div>
+    	    </div>
+
+			<div class="main_controls">
+				<div class="main_controls_block">
+					<div onclick="muteUnmute()" class="main_controls_button main_mute_button">
+						<i class="fas fa-microphone"></i>
+						<span class="remaining">Mute</span>
+					</div>
+					<div onclick="playStop()" class="main_controls_button main_video_button">
+						<i class="fa-solid fa-video"></i>
+						<span class="remaining">Stop video</span>
+					</div>
+				</div>
+
+				<div class="main_controls_block">
+					<div onclick="changeTheme()" class="main_controls_button">
+						<i class="fa-solid fa-circle-half-stroke"></i>
+						<span class="remaining">Theme</span>
+					</div>
+					<div class="main_controls_button">
+						<i class="fa-solid fa-chalkboard-user"></i>
+						<span class="remaining">whiteboard</span>
+					</div>
+					<div class="main_controls_button">
+						<i class="fas fa-user-friends"></i>
+						<span class="remaining">participants</span>
+					</div>
+					<div class="main_controls_button">
+						<i class="fas fa-comment-alt"></i>
+						<span class="remaining">chat</span>
+					</div>
+				</div>
+
+				<div class="main_controls_block">
+					<div onclick="leaveMeet()" class="main_controls_button">
+						<i class="fa-solid fa-person-running" style="color: #d71616; size: 30px;"></i>
+						<span class="leave_meeting" style="color: #d71616; size: 10px;">Leave meeting</span>
+					</div>
+				</div>
+
+			</div>
+      	</div>
+
+		<div class="main_right">
+			<div class="main_header">
+				CHAT BOX
+			</div>
+			<div class="main_chat_window">
+				<ul class="messages">
+
+				</ul>
+			</div>
+			<div class="main_message_container">
+				<input name="chats" type="chat_message" type="text" placeholder="Type message here..">
+				<!-- <button class="main__send__message" type="submit">
+					<i class="fa-solid fa-paper-plane"></i>
+				</button> -->
+			</div>
+		</div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+
+</html>

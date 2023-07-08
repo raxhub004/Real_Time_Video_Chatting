@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Google Meet Clone</title>
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"/>
+    <style>
+      .logo{
+        margin: 10px;    
+      }
+      input:focus{
+        outline:none;
+      }
+    </style>
+  </head>
+  <body style="font-family: verdana;">
+    <div class="main_home">
+      <div class="main_home_header">
+        <div class="main_welcome">
+          <!-- <h2>Welcome <%= username %> </h2> -->
+          <img src="https://www.gstatic.com/meet/google_meet_horizontal_wordmark_2020q4_1x_icon_124_40_2373e79660dabbf194273d27aa7ee1f5.png" alt="gmeet" class="logo">
+          <h6 style="margin-left: 15px;margin-top: 0px;font-size: 30px;font-weight: 100;">Welcome <b style="font-size: 35px;"><%= username %> </b></h6>
+        </div>
+      </div>
+
+      <div class="main_body" style="display: flex;padding-top: 10px;padding-bottom: 30px;">
+          <div class="one" style="padding-left:45px ;">
+            <div style="width: 50px;"></div>
+            <div style = "display: flex; flex-direction: column;padding-bottom: 0px;">
+                <div class="main_about_text">
+                    <h1 style="font-family: sans-serif;font-size: 45px;font-weight: 200;">Premium video meetings <br>Now free for everyone.</h1>
+                    <p style="color: rgb(56, 54, 54);">
+                        Click <strong>New meeting</strong> to get a new link you can send to
+                        people<br />
+                        you want to meet with or Join an
+                        <strong>existing meeting</strong> with a code
+                    </p>
+                </div>
+
+                <div class="main_meeting" style="display: flex; flex-direction: row; padding-top: 60px;padding-bottom: 20px; border-bottom: 1px solid rgb(55, 54, 54);">
+                    <div onclick="newMeet('<%=ROOM_ID%>')" class="new_meeting_button" 
+                        style="padding-right: 20px; padding-left: 20px;padding-top: 15px;padding-bottom: 15px; background-color: rgb(6, 112, 211);height: fit-content;border-radius: 5px;cursor: pointer;" >
+                        <i class="fa-solid fa-video" style="color: aliceblue;"></i>
+                        <span style="color: aliceblue;">New Meeting</span>
+                    </div>
+                    <div class="link_meeting" style="padding-right: 20px; padding-left: 20px;padding-top: 0px;padding-bottom: 15px;margin-left: 40px;">
+                        <form id="join-link" >
+                            <div class="input_icon" style="display: flex;flex-direction: row;">
+                                <i style="position: absolute;font-size: 20px; padding:12px;color: rgb(68, 65, 65);" class="fa-solid fa-keyboard" ></i>
+                                <input class="input_link" type="text" id="code" name="code" placeholder="Enter ROOM ID" style="font-size: medium;padding-top: 14px;padding-bottom: 14px;padding-left: 38px;border-top-left-radius: 5px;border-bottom-left-radius: 5px;border: 1px solid rgb(47, 46, 46);border-right: 0px;"/>
+                                <input type="submit" value="Join" class="join_button" style="border-top-right-radius: 5px;border: 1px solid rgb(47, 46, 46);border-bottom-right-radius:5px ;background-color: rgb(6, 112, 211);font-size: medium;color: aliceblue;cursor: pointer;" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="git" style="margin-top: 30px;margin-left: 20px;">
+                  <a href="https://github.com/KodudulaAshish/Gmeet-Clone" style="text-decoration: none;">
+                      <i class="fa-brands fa-github" style="color: #000000;font-size: 60px;"></i>
+                      <br>
+                      <span style="color: rgb(0, 0, 0);margin-left: 5px;">visit us</span>
+                  </a>
+              </div>
+            </div>
+            <div style="width: 50px;"></div>
+          </div>
+          <div class="two" style="margin-left: 320px;padding-top:0px;height: 300px;display: flex;flex-direction: column;">
+            <img src="https://www.gstatic.com/meet/user_edu_get_a_link_light_90698cd7b4ca04d3005c962a3756c42d.svg" alt="gimage">
+            <p style="font-size: 30px;">
+              Get a link you can share
+            </p>
+          </div>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://kit.fontawesome.com/e28dbf8b03.js"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    function newMeet(roomId) {
+      window.location.href = `/${roomId}`;
+    }
+    var form = document.getElementById("join-link");
+    form.addEventListener("submit", () => {
+      // console.log()
+      window.location.href = "/" + document.getElementById("code").value;
+      event.preventDefault();
+    });
+    var username = "<%= username %>";
+  </script>
+</html>
